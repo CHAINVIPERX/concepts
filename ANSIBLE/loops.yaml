@@ -21,9 +21,9 @@
     ansible.builtin.package:
       name: "{{item.name}}"
       state: "{{item.state}}"
-      state: absent
+      #state: absent
     loop:
-    - {name:  'rabbitmq',state:  'present'}
+    - {name:  'git',state:  'present'}
     - {name:  'nginx',state:  'present'}
     - {name:  'postfix',state:  'absent'}
     - {name:  'mysql',state:  'absent'}
