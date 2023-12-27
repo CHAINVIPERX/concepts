@@ -14,3 +14,11 @@
 #- (file name)
 
 
+#If same variable is given in multiple sources this will be the priority order
+#CMD
+#TASK
+#FILE
+#PROMPT
+#PLAY
+#INVENTORY
+#ROLES

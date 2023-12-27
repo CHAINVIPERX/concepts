@@ -1,7 +1,7 @@
 - name: varibale promt
   hosts:  localhost
   vars_prompt:
-  - name: "first_prompt"
+  - name: "first_prompt" #use _ for no errors
     prompt: please enter your name
     private: false #user can see their typing
   - name: "second_prompt"
