@@ -1,0 +1,13 @@
+- name: conditions
+  hosts:  localhost
+  tasks:
+  - name: Check Username Existence
+    ansible.builtin.command: id roboshop
+    register: userES
+    ignore_errors: true
+  - name: print value
+    ansible.builtin.debug:
+      msg:  "output is {{userES}}"
+  - name: print exit status
+    ansible.builtin.debug:
+      msg:  "ES is {{userES.rc}}"
