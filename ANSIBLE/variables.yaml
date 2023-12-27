@@ -1,0 +1,9 @@
+- name: Variable in playbook
+  hosts:  localhosts
+  vars:
+    name: "PAVILION"
+    greet:  "HELLO"
+  tasks:
+  - name: Check variables
+    ansible.builtin.debug:
+      msg:  "{{greet}} {{name}}"
