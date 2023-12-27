@@ -1,9 +1,16 @@
 - name: Variable in playbook
   hosts:  localhost
-  vars:
+  vars: #VARIABLES
     name: "PAVILION"
     greet:  "HELLO"
   tasks:
   - name: Check variables
     ansible.builtin.debug:
       msg:  "{{greet}} {{name}}"
+
+#variable can be created in separate file and can be called when necessary.
+#using 
+#vars_files: 
+#- (file name)
+
+
