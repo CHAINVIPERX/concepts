@@ -13,3 +13,17 @@
 
 
     #names can be replaced with packages to install all packages
+
+- name: Installing and Uninstalling Packages Using LOOPS
+  hosts:  localhost
+  tasks:
+  - name: Installing and Uninstalling Packages
+    ansible.builtin.packages:
+      name: "{{item.name}}"
+      state: "{{item.state}}"
+      state: absent
+    loop:
+    - {name:  'rabbitmq',state:  'present'}
+    - {name:  'nginx',state:  'present'}
+    - {name:  'postfix',state:  'absent'}
+    - {name:  'mysql',state:  'absent'}
