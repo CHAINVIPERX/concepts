@@ -1,0 +1,27 @@
+- name: DATA_TYPES
+  hosts:  localhost
+  vars:
+    name: BALAJI
+    skills: #this is list type
+    - gaming
+    - eating
+    - sleeping
+    - okay
+    experience: #this is map type
+      gaming: 15
+      eating: 22
+      sleeping: 22
+    intelligent:  false #or ture #this is boolean type
+  tasks:
+  - name: User name
+    ansible.builtin.debug
+      msg:  "{{name}}"
+  - name: Balaji_skills
+    ansible.builtin.debug
+      msg:  "{{skills}}"
+  - name: Balaji_experience
+    ansible.builtin.debug
+      msg:  "{{experience}}"
+  - name: True_or_False
+    ansible.builtin.debug
+      msg:  "Is he intelligent:{{intelligent}}"
