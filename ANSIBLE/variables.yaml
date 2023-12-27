@@ -1,5 +1,5 @@
 - name: Variable in playbook
-  hosts:  localhosts
+  hosts:  localhost
   vars:
     name: "PAVILION"
     greet:  "HELLO"
