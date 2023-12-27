@@ -1,13 +1,13 @@
 - name: varibale promt
   hosts:  localhost
   vars_prompt:
-  - name: "first prompt"
+  - name: "first_prompt"
     prompt: please enter your name
     private: false #user can see their typing
-  - name: "second prompt"
+  - name: "second_prompt"
     prompt: enter password
     private: true #user can see their typing
   tasks:
   - name: print
     ansible.builtin.debug:
-      msg: "Name: {{first prompt}} Password: {{second prompt}}"
+      msg: "Name: {{first_prompt}} Password: {{second_prompt}}"
