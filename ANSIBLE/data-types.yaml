@@ -15,13 +15,13 @@
   tasks:
   - name: User name
     ansible.builtin.debug
-      msg:  "{{name}}"
+      msg: "{{name}}"
   - name: Balaji_skills
     ansible.builtin.debug
-      msg:  "{{skills}}"
+      msg: "{{skills}}"
   - name: Balaji_experience
     ansible.builtin.debug
-      msg:  "{{experience}}"
+      msg: "{{experience}}"
   - name: True_or_False
     ansible.builtin.debug
-      msg:  "Is he intelligent:{{intelligent}}"
+      msg: "Is he intelligent:{{intelligent}}"
