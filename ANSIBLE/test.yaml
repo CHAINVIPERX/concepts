@@ -1,0 +1,13 @@
+- name: Hello World
+  hosts: localhost
+  tasks:
+  - name: Run Playbook
+    ansible.builtin.debug:
+      msg: "Hello World"
+
+- name: Earth
+  hosts: localhost
+  tasks:
+  - name: Run Playbook
+    ansible.builtin.debug:
+      msg: "Earth"
