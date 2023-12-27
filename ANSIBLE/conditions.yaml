@@ -1,5 +1,6 @@
 - name: conditions
   hosts:  localhost
+  become: yes
   tasks:
   - name: Check Username Existence
     ansible.builtin.command: id roboshop
@@ -14,4 +15,4 @@
   - name: Creating User
     ansible.builtin.user: 
       name: roboshop
-    when: userES.rc != 0
+    when: userES.rc != 0 #condition

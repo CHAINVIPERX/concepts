@@ -1,0 +1,15 @@
+- name: Loops
+  hosts:  localhosts
+  tasks:  
+  - name: print names
+    ansible.builtin.debug:
+      msg:  "name is {{item}}" #item is used to iterate through loop and cant be changed
+    loop:  #loops
+    - BALAJI
+    - GOPI
+    - ALEHKYA
+    - DEEPAK
+    - PAVAN
+
+
+    #names can be replaced with packages to install all packages
