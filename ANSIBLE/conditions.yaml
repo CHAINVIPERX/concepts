@@ -11,3 +11,7 @@
   - name: print exit status
     ansible.builtin.debug:
       msg:  "ES is {{userES.rc}}"
+  - name: Creating User
+    ansible.builtin.user: 
+      name: roboshop
+    when: userES.rc != 0
