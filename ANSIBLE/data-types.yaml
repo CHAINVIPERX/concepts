@@ -24,4 +24,4 @@
       msg: "{{experience}}"
   - name: True_or_False
     ansible.builtin.debug:
-      msg: "Is he intelligent:{{intelligent}}"
+      msg: "Is he intelligent::{{intelligent}}"
