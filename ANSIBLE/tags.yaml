@@ -1,0 +1,14 @@
+- name: TAGS
+  hosts:  localhost
+  tasks:
+  - name: print DEVOPS
+    ansible.builtin.debug:
+      msg:  "message: DEVOPS"
+    tags:
+    - devops
+
+  - name: print AWS
+    ansible.builtin.debug:
+      msg:  "message:AWS"
+    tags:
+    - aws
