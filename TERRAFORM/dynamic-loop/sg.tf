@@ -1,5 +1,5 @@
 resource "aws_security_group" "roboshop-all" {
-  name        = "Dynamic-Demo"
+  name        = "Dynamic-loop-Demo"
   description = "Demo"
 
   dynamic "ingress" {
