@@ -59,6 +59,14 @@ resource "aws_subnet" "database" {
   )
 }
 
+resource "aws_db_subnet_group" "name" {
+  name       = local.name
+  subnet_ids = aws_subnet.database[*].id
+  tags = {
+  Name = "DB subnet Group" }
+
+}
+
 resource "aws_eip" "eip" {
   domain = "vpc"
 }
