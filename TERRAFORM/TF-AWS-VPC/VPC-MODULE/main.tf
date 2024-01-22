@@ -21,6 +21,15 @@ resource "aws_internet_gateway" "robo_igw" {
 
 }
 
+# resource "aws_vpn_gateway" "vpn_gw" {
+#   vpc_id = aws_vpc.robo-vpc.id
+
+#   tags = {
+#     Name = "${local.name}-vpn_gw"
+#   }
+# }
+
+
 resource "aws_subnet" "public" {
   count             = length(var.public_subnets_cidr)
   vpc_id            = aws_vpc.robo-vpc.id
@@ -81,6 +90,7 @@ resource "aws_nat_gateway" "ngw" {
   depends_on = [aws_internet_gateway.robo_igw]
 }
 
+
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.robo-vpc.id
 
@@ -113,6 +123,12 @@ resource "aws_route_table" "database_rt" {
     }
   )
 }
+
+# resource "aws_vpn_gateway_route_propagation" "vpn_private" {
+#   vpn_gateway_id = aws_vpn_gateway.vpn_gw.id
+#   route_table_id = aws_route_table.private_rt.id
+# }
+
 resource "aws_route" "public_route" {
   route_table_id         = aws_route_table.public_rt.id
   destination_cidr_block = "0.0.0.0/0"
@@ -123,12 +139,16 @@ resource "aws_route" "private_route" {
   route_table_id         = aws_route_table.private_rt.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.ngw.id
+  # gateway_id = aws_vpn_gateway.vpn_gw.id
+
 }
+
 
 resource "aws_route" "database_route" {
   route_table_id         = aws_route_table.database_rt.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.ngw.id
+  # gateway_id = aws_vpn_gateway.vpn_gw.id
 }
 
 resource "aws_route_table_association" "public" {
