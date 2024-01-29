@@ -8,7 +8,7 @@ variable "instance_names" {
     # # Cart      = "t2.micro"
     # # Dispatch  = "t2.micro"
     # Web = "t2.micro"
-    # Payments  = "t2.micro"
+    # Payment  = "t2.micro"
     # MongoDB   = "t2.small"
     # Mysql     = "t2.micro"
     # Shipping  = "t2.small"

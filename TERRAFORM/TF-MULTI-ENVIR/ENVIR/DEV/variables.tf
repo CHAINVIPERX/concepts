@@ -4,7 +4,7 @@ variable "instance_names" {
     Redis_dev    = "t2.micro"
     RabbitMQ_dev = "t2.micro"
     Web_dev      = "t2.micro"
-    # Payments  = "t2.micro"
+    # Payment  = "t2.micro"
     # MongoDB   = "t2.small"
     # Mysql     = "t2.micro"
     # Shipping  = "t2.small"
