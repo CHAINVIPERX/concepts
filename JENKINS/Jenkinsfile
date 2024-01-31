@@ -21,7 +21,9 @@ pipeline {
         }
         stage('Good Morning'){
             steps{
-                echo "Good Morning"
+                sh """
+                echo "$GREETING"
+                """
             }
         }
     }
