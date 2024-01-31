@@ -5,7 +5,7 @@ pipeline {
         }
     }
     environment {
-        greetings = 'Hello Jenkins'
+        GREETING = 'Hello Jenkins'
     }
 
     stages {
