@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                eco "Hello"
+            }
+        }
+        stage('Earth'){
+            steps{
+                echo "Earth"
+            }
+        }
+        stage('Good Morning'){
+            steps{
+                echo "Good Morning"
+            }
+        }
+    }
+}
