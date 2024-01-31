@@ -4,6 +4,9 @@ pipeline {
             label 'AGENT-1'
         }
     }
+    environment {
+        greetings = 'Hello Jenkins'
+    }
 
     stages {
         stage('Hello') {
