@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Earth'){
             steps{
-                echo "Earth"
+                echo "Earth is Round"
             }
         }
         stage('Good Morning'){
