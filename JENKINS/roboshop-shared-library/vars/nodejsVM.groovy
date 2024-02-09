@@ -22,7 +22,7 @@ def call(Map configMap){
             stage('Version') {
                 steps {
                 script {
-                    def packageJson = readJSON file : "${configMap.component}"/package.json"
+                    def packageJson = readJSON file : "${configMap.component}/package.json"
                     packageVersion = packageJson.version
                     echo "application version : $packageVersion"
                 }
