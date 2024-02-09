@@ -22,7 +22,7 @@ def call(Map configMap){
             stage('Version') {
                 steps {
                 script {
-                    def packageJson = readJSON file : '${configMap.component}/package.json'
+                    def packageJson = readJSON file : '"${configMap.component}"/package.json'
                     packageVersion = packageJson.version
                     echo "application version : $packageVersion"
                 }
@@ -58,7 +58,7 @@ def call(Map configMap){
                 steps{
                     sh """
                     cd ${configMap.component}/
-                    zip -q -r ${configMap.component}.zip ./* -x ".git" -x "*.zip"
+                    zip -q -r "${configMap.component}".zip ./* -x ".git" -x "*.zip"
                     ls -ltr
                     pwd
                     """
