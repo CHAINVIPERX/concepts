@@ -45,14 +45,14 @@ def call(Map configMap){
                 }
             }
 
-            stage('SonarQube Scanning'){
-                steps{
-                    sh """
-                    cd ${configMap.component}/
-                    sonar-scanner
-                    """
-                }
-            }
+            // stage('SonarQube Scanning'){
+            //     steps{
+            //         sh """
+            //         cd ${configMap.component}/
+            //         sonar-scanner
+            //         """
+            //     }
+            // }
 
             stage('Zipping'){
                 steps{
@@ -71,7 +71,7 @@ def call(Map configMap){
 
                         def filePath = "catalogue/${configMap.component}.zip"
                         echo "${filePath}"
-                        
+
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
