@@ -22,7 +22,7 @@ def call(Map configMap){
             stage('Version') {
                 steps {
                 script {
-                    def packageJson = readJSON file : 'catalogue/package.json'
+                    def packageJson = readJSON file : '${configMap.component}/package.json'
                     packageVersion = packageJson.version
                     echo "application version : $packageVersion"
                 }
@@ -31,7 +31,7 @@ def call(Map configMap){
             stage('Install Dependencies'){
                 steps{
                     sh """
-                    cd catalogue/
+                    cd ${configMap.component}/
                     npm install
                     """
                 }
@@ -48,7 +48,7 @@ def call(Map configMap){
             stage('SonarQube Scanning'){
                 steps{
                     sh """
-                    cd catalogue/
+                    cd ${configMap.component}/
                     sonar-scanner
                     """
                 }
@@ -57,8 +57,8 @@ def call(Map configMap){
             stage('Zipping'){
                 steps{
                     sh """
-                    cd catalogue/
-                    zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
+                    cd ${configMap.component}/
+                    zip -q -r ${configMap.component}.zip ./* -x ".git" -x "*.zip"
                     ls -ltr
                     pwd
                     """
@@ -67,19 +67,22 @@ def call(Map configMap){
             stage('Publish Artifacts') {
                 steps{ 
                     script {
-                        //  def filePath = "${PWD}/workspace/APPS/catalogue/catalogue/catalogue.zip"
-                        //   echo "${filePath}"
+                        //  def filePath = "${PWD}/workspace/APPS/${configMap.component}/${configMap.component}/${configMap.component}.zip"
+
+                       echo "${filePath}"
+
+                        def filePath = "catalogue/${configMap.component}.zip"
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
                             nexusUrl: "${nexusURL}",
                             groupId:'com.roboshop',
                             version: "${packageVersion}",
-                            repository: 'catalogue',
+                            repository: '${configMap.component}',
                             credentialsId:'nexus-auth',
                             artifacts: [
                                 [
-                                    artifactId: 'catalogue' ,
+                                    artifactId: '${configMap.component}' ,
                                     classifier: '',
                                     file: "${filePath}",
                                     type:'zip'
@@ -101,7 +104,7 @@ def call(Map configMap){
                                 string(name:'Version',value:"${packageVersion}"),
                                 string(name:'Environment',value:"dev") 
                                 ] 
-                                build job:  "catalogue-deploy" , wait:  true , parameters:params
+                                build job:  "${configMap.component}-deploy" , wait:  true , parameters:params
                     }
                 }
             }
