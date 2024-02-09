@@ -45,14 +45,14 @@ def call(Map configMap){
                 }
             }
 
-            // stage('SonarQube Scanning'){
-            //     steps{
-            //         sh """
-            //         cd ${configMap.component}/
-            //         sonar-scanner
-            //         """
-            //     }
-            // }
+            stage('SonarQube Scanning'){
+                steps{
+                    sh """
+                    cd ${configMap.component}/
+                    sonar-scanner
+                    """
+                }
+            }
 
             stage('Zipping'){
                 steps{
