@@ -69,9 +69,9 @@ def call(Map configMap){
                     script {
                         //  def filePath = "${PWD}/workspace/APPS/${configMap.component}/${configMap.component}/${configMap.component}.zip"
 
-                       echo "${filePath}"
-
                         def filePath = "catalogue/${configMap.component}.zip"
+                        echo "${filePath}"
+                        
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
