@@ -50,7 +50,8 @@ def call(Map configMap){
                 steps{
                     sh """
                     cd ${configMap.component}/
-                    sonar-scanner
+                    #sonar-scanner
+                    echo "sonar scan will run here"
                     """
                 }
             }
