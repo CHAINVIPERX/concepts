@@ -7,7 +7,8 @@ def call(Map configMap){
         }
         environment {
         packageVersion = ''
-        nexusURL= '44.223.74.228:8081'
+        
+        // nexusURL= '44.223.74.228:8081'
         }
         options {
             timeout(time: 1, unit: 'HOURS')
@@ -75,7 +76,7 @@ def call(Map configMap){
                         nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: "${nexusURL}",
+                            nexusUrl: pipelineGlobals.nexusURL(),
                             groupId:'com.roboshop',
                             version: "${packageVersion}",
                             repository: "${configMap.component}",
