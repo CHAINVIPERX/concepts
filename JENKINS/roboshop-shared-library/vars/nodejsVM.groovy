@@ -105,6 +105,7 @@ def call(Map configMap){
                             def params = [ 
                                 string(name:'Version',value:"${packageVersion}"),
                                 string(name:'Environment',value:"dev") 
+                                string(name: 'Nexus_ip' , value:pipelineGlobals.nexusURL())
                                 ] 
                                 build job:  "../../${configMap.component}-deploy" , wait:  true , parameters:params
                     }
