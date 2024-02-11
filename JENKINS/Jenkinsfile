@@ -27,14 +27,14 @@ pipeline {
                }
             }
         }
-        // stage('Install Dependencies'){
-        //     steps{
-        //         sh """
-        //         cd catalogue/
-        //         npm install
-        //         """
-        //     }
-        // }
+        stage('Install Dependencies'){
+            steps{
+                sh """
+                cd catalogue/
+                npm install
+                """
+            }
+        }
 
         stage('Unit Tests'){
             steps{
@@ -44,50 +44,51 @@ pipeline {
             }
         }
 
-        // stage('SonarQube Scanning'){
-        //     steps{
-        //         sh """
-        //         cd catalogue/
-        //         sonar-scanner
-        //         """
-        //     }
-        // }
+        stage('SonarQube Scanning'){
+            steps{
+                sh """
+                cd catalogue/
+                #sonar-scanner
+                echo "sonar scan will run here"
+                """
+            }
+        }
 
-        // stage('Zipping'){
-        //     steps{
-        //         sh """
-        //         cd catalogue/
-        //         zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
-        //         ls -ltr
-        //         pwd
-        //         """
-        //     }
-        // }
-    //     stage('Publish Artifacts') {
-    //         steps{ 
-    //             script {
-    //                  def filePath = "${PWD}/workspace/catalogue/catalogue/catalogue.zip"
-    //                 //   echo "${filePath}"
-    //                 nexusArtifactUploader(
-    //                     nexusVersion: 'nexus3',
-    //                     protocol: 'http',
-    //                     nexusUrl: "${nexusURL}",
-    //                     groupId:'com.roboshop',
-    //                     version: "${packageVersion}",
-    //                     repository: 'catalogue',
-    //                     credentialsId:'nexus-auth',
-    //                     artifacts: [
-    //                         [
-    //                             artifactId: 'catalogue' ,
-    //                             classifier: '',
-    //                             file: "${filePath}",
-    //                             type:'zip'
-    //                         ]
-    //                     ]
-    //             )
-    //         }
-    //     }
-    // }
+        stage('Zipping'){
+            steps{
+                sh """
+                cd catalogue/
+                zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
+                ls -ltr
+                pwd
+                """
+            }
+        }
+        stage('Publish Artifacts') {
+            steps{ 
+                script {
+                     def filePath = "${PWD}/workspace/catalogue/catalogue/catalogue.zip"
+                    //   echo "${filePath}"
+                    nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: "${nexusURL}",
+                        groupId:'com.roboshop',
+                        version: "${packageVersion}",
+                        repository: 'catalogue',
+                        credentialsId:'nexus-auth',
+                        artifacts: [
+                            [
+                                artifactId: 'catalogue' ,
+                                classifier: '',
+                                file: "${filePath}",
+                                type:'zip'
+                            ]
+                        ]
+                )
+            }
+        }
+    }
     stage('Deploy'){
         when{
             expression{
