@@ -1,0 +1,3 @@
+FROM almalinux:8
+LABEL   COURSE="DEVOPS" \
+    STUDENT="BALAJI" \
