@@ -7,5 +7,5 @@ ARG COURSE
 ARG NAME
 ENV COURSE=${COURSE}
 ENV NAME=${NAME}
-RUN echo "Course: ${COURSE}, NAME: ${NAME}"
+RUN echo "Course: ${COURSE}, NAME: ${NAME}, version: ${version}"
 CMD [ "sleep","100" ]
