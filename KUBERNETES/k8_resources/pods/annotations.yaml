@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: annotaions-demo
+  name: annotations-demo
   labels:
     course: DevOps
     name: "Balaji_Reddy"
