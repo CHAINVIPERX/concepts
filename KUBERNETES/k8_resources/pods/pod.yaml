@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "Yaml-pods"
+  name: yaml-pods
 spec:
   containers:
   - name: pod
