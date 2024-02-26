@@ -4,7 +4,7 @@ metadata:
   name: annotaions-demo
   labels:
     course: DevOps
-    name: "Balaji Reddy"
+    name: "Balaji_Reddy"
   annotations:
     ladoo.shop: "website 112 rupees"
 spec:
