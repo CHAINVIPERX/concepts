@@ -6,7 +6,7 @@ metadata:
     course: DevOps
     name: "Balaji_Reddy"
   annotations:
-    ladoo.shop: "website_112_rupees"
+    ladoo.shop: "website 112 rupees"
 spec:
   containers:
   - name: hello-pod
