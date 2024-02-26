@@ -5,7 +5,7 @@ metadata:
   # namespace:  roboshop
 spec:
   containers:
-  - name: 1_pod
+  - name: 1-pod
     image:  nginx
     ports:
     - containerPort:  80
