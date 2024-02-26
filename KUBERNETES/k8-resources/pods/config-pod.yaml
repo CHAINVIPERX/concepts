@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-pod
+spec:
+  containers:
+  - name: config-pod
+    image:  nginx
+    ports:
+    - containerPort:  80
+    env:
+    - name: course
+      valueFrom:
+        configMapKeyRef:
+          name: devops-config
+          key:  course
+    - name: name
+      valueFrom:
+        configMapKeyRef:
+          name: devops-config
+          key:  name
