@@ -1,0 +1,13 @@
+appVersion: v1
+kind: Pod
+metadata:
+  name: label-demo
+  labels:
+    course: DevOps
+    name: Balaji
+spec:
+  containers:
+  - name: hello-pod
+    image:  nginx
+    ports:
+    - containerPort:  80
