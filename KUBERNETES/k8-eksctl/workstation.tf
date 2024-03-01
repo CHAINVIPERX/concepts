@@ -1,9 +1,10 @@
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name          = "workstation-eksctl"
-  ami           = data.aws_ami.centos8.id
-  instance_type = "t2.micro"
+  name                 = "workstation-eksctl"
+  ami                  = data.aws_ami.centos8.id
+  instance_type        = "t2.micro"
+  iam_instance_profile = "instance_creation_shell"
   #   key_name               = "user1"
   #   monitoring             = true
   vpc_security_group_ids = [aws_security_group.allow_eksctl.id]
