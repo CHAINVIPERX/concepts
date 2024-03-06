@@ -8,9 +8,8 @@ spec:
   storageClassName: ebs-sc
   resources:
     requests:
-      storage:  4Gi
+      storage: 4Gi
 ---
-
 apiVersion: v1
 kind: Pod
 metadata:
@@ -30,9 +29,7 @@ spec:
   - name: nginx-data
     persistentVolumeClaim:
       claimName: ebs-dynamic
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -40,8 +37,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    demo: ebs-dynamic
+    demo: ebs-static
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
+    port: 80 #service-port
+    targetPort: 80 #container-port
