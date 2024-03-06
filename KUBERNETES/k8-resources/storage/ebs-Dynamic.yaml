@@ -1,7 +1,48 @@
-apiVersion: stroage.k8s.io/v1
-kind: StroageClass
+apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: ebs-sc
-provisioner:  ebs.csi.aws.com
-volumeBindingMode:  
+  name: ebs-dynamic
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ebs-sc
+  resources:
+    requests:
+      storage:  4Gi
 ---
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  labels:
+    demo: ebs-dynamic
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: nginx-data
+      mountPath: /usr/share/nginx/html
+  nodeSelector:
+    zone: 1b
+  volumes:
+  - name: nginx-data
+    persistentVolumeClaim:
+      claimName: ebs-dynamic
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebs-dynamic
+spec:
+  type: LoadBalancer
+  selector:
+    demo: ebs-dynamic
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
