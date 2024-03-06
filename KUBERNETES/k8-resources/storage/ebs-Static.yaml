@@ -47,20 +47,6 @@ spec:
       claimName: ebs-static
 
 ---
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-lb
-  labels: 
-    app:  nginx-lb
-    demo: service
-spec:
-  containers:
-  - name: nginx-lb
-    image:  nginx
-    ports:
-    - containerPort:  80
----
 
 apiVersion: v1
 kind: Service
