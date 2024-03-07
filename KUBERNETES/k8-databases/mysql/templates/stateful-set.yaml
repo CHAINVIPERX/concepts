@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app:  mysql
+    project:  roboshop
+    tier: db
+spec: 
+  selector:
+    matchLabels:
+      app:  mysql
+      project:  roboshop
+      tier: db
+  serviceName:  "mysql"
+  replicas: {{  .Values.statefulset.replicas }}
+  minReadySeconds:  10
+  template:
+    metadata:
+      labels:
+        app:  mysql
+        project:  roboshop
+        tier: db
+    spec: 
+      containers:
+      - name: mysql
+        image:  "balaji2212/mysql:{{  .Values.statefulset.imageVersion  }}"
+        envFrom:
+        - configMapRef:
+            name: mysql
+        - secretRef:
+            name: mysql
+        volumeMounts:
+        - name: mysql
+          mountPath:  /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql
+    spec:
+      accessModes:  [ "ReadWriteOnce" ]
+      storageClassName: "ebs-sc" #provide storage class name after creaing it
+      resources:
+        requests:
+          storage:  2Gi
+
