@@ -17,8 +17,14 @@ add helm repo --> kubernetes resource files
 helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
 helm repo update
 helm upgrade --install aws-ebs-csi-driver --namespace kube-system aws-ebs-csi-driver/aws-ebs-csi-driver
-helm install nginx .
 
 
 install k9s for better UI
 curl -sS https://webinstall.dev/k9s | bash
+
+
+
+horizontal pod autoscaling (HPA)
+requirements:
+metric API : kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/high-availability-1.21+.yaml
+deployment should have limites mentioned
