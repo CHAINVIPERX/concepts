@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb
+  name: redis
   labels:
-    app:  mongodb
+    app:  redis
     project:  roboshop
     tier: db
 spec:
   ports:
   - protocol: TCP
-    port: 27017
-    targetPort: 27017
+    port: 6379
+    targetPort: 6379
   clusterIP:  None
   selector:
-    app:  mongodb
+    app:  redis
     project:  roboshop
     tier: db

@@ -18,3 +18,7 @@ helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-d
 helm repo update
 helm upgrade --install aws-ebs-csi-driver --namespace kube-system aws-ebs-csi-driver/aws-ebs-csi-driver
 helm install nginx .
+
+
+install k9s for better UI
+curl -sS https://webinstall.dev/k9s | bash
