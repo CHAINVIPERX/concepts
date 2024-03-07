@@ -1,43 +1,41 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
+  name: rabbitmq
   labels:
-    app:  mysql
+    app:  rabbitmq
     project:  roboshop
     tier: db
 spec: 
   selector:
     matchLabels:
-      app:  mysql
+      app:  rabbitmq
       project:  roboshop
       tier: db
-  serviceName:  "mysql"
+  serviceName:  "rabbitmq"
   replicas: {{  .Values.statefulset.replicas }}
   minReadySeconds:  10
   template:
     metadata:
       labels:
-        app:  mysql
+        app:  rabbitmq
         project:  roboshop
         tier: db
     spec: 
       containers:
-      - name: mysql
-        image:  "balaji2212/mysql:{{  .Values.statefulset.imageVersion  }}"
-        args:
-        - "--ignore-db-dir=lost+found"
+      - name: rabbitmq
+        image:  "balaji2212/rabbitmq:{{  .Values.statefulset.imageVersion  }}"
         envFrom:
         - configMapRef:
-            name: mysql
+            name: rabbitmq
         - secretRef:
-            name: mysql
+            name: rabbitmq
         volumeMounts:
-        - name: mysql
-          mountPath:  /var/lib/mysql
+        - name: rabbitmq
+          mountPath:  /var/lib/rabbitmq
   volumeClaimTemplates:
   - metadata:
-      name: mysql
+      name: rabbitmq
     spec:
       accessModes:  [ "ReadWriteOnce" ]
       storageClassName: "ebs-sc" #provide storage class name after creaing it
