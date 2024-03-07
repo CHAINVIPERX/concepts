@@ -24,7 +24,7 @@ spec:
     spec: 
       containers:
       - name: rabbitmq
-        image:  "balaji2212/rabbitmq:{{  .Values.statefulset.imageVersion  }}"
+        image:  rabbitmq
         envFrom:
         - configMapRef:
             name: rabbitmq
