@@ -26,8 +26,6 @@ spec:
       - name: rabbitmq
         image:  rabbitmq
         envFrom:
-        - configMapRef:
-            name: rabbitmq
         - secretRef:
             name: rabbitmq
         volumeMounts:
