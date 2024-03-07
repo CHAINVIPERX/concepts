@@ -13,7 +13,7 @@ spec:
       project:  roboshop
       tier: db
   serviceName:  "redis"
-  replicas: {{  .Values.stateful-set.replicas }}
+  replicas: {{  .Values.statefulset.replicas }}
   minReadySeconds:  10
   template:
     metadata:
