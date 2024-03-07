@@ -14,7 +14,7 @@ spec:
       project:  roboshop
       tier: db
   serviceName:  "mongodb"
-  replicas: {{  .Values.stateful-set.replicas }}
+  replicas: {{  .Values.statefulset.replicas }}
   minReadySeconds:  10
   template:
     metadata:
@@ -25,7 +25,7 @@ spec:
     spec: 
       containers:
       - name: mongodb
-        image:  "balaji2212/mongodb:{{  .Values.stateful-set.imageVersion  }}"
+        image:  "balaji2212/mongodb:{{  .Values.statefulset.imageVersion  }}"
         volumeMounts:
         - name: mongodb
           mountPath:  /data/db
