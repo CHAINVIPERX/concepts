@@ -26,6 +26,13 @@ spec:
         image:  "
         balaji2212/user:{{  .Values.deployment.imageVersion }}"
         imagePullPolicy:  Always
+        resources:
+          requests:
+            cpu:  "50m"
+            memory:  "128Mi"
+          limits:
+            cpu:  "100m"
+            memory: "256Mi"
         envFrom:
         - configMapRef:
             name: user
